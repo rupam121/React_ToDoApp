@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useState } from "react";
 
-function TodoInput() {
+function TodoInput(props) {
+  const [inputText, setInputText] = useState("");
   return (
-    <div>TodoInput</div>
-  )
+    <div className="input-container">
+      <input
+        type="text"
+        className="input-box-todo"
+        placeholder="Enter Your ToDo"
+        value={inputText}
+        onChange={(e) => {
+          setInputText(e.target.value);
+        }}
+      />
+      <button
+        className="add-btn"
+        onClick={() => {
+          props.addList(inputText);
+          setInputText("");
+        }}
+      >
+        +
+      </button>
+    </div>
+  );
 }
 
-export default TodoInput
+export default TodoInput;
